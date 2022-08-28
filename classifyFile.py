@@ -11,6 +11,7 @@ def main():
 	print("----------------------------------------------------")
 	
 	
+	#List of Folder to be created
 	dir_dict ={
 		'app' :'Application',
 		'files' : 'File',
@@ -23,9 +24,12 @@ def main():
 		'data' : 'Data',
 		'font' : 'Font'
 	}
+	
+	#Input for directory you want to manage
 	src_dir = input("\nYour Directory :")
-	final_dir = {}
+	final_dir = {} #Blank final directory list
 
+	#Loop for every item in dir_dict
 	for name, nameFile in dir_dict.items():
 		finaldir = src_dir + r"/" + nameFile
 		final_dir[name] = finaldir
@@ -33,6 +37,7 @@ def main():
 			os.mkdir(finaldir)
 		print("Folder ", nameFile, " is created!")
 
+	#Assign each extension to each folder
 	action = {
 		'pdf' : moveto(final_dir['files']),
 		'PDF' : moveto(final_dir['files']),
@@ -75,6 +80,7 @@ def main():
 		'ttf' : moveto(final_dir['font'])
 	}
 
+	#Loop every item Your Directory, get the extension and move the file
 	for file in os.listdir(src_dir):
 	    ext = os.path.splitext(file)[1][1:]
 	    if ext in action:
